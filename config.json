@@ -1,0 +1,14 @@
+{
+  "port": 3030,
+  "host": "127.0.0.1",
+  "validators": [
+    {
+      "pubkey": "cd5fd0859c3a27c13dd9734b7cdc6f2c25646e45821dcecaa089808803d01706",
+      "relay": "wss://test-relay.fireacademy.io"
+    },
+    {
+      "pubkey": "804f399157512ee115d19e0e15fd63f97f6330755c6f928a8c49a6bda35df74e",
+      "relay": "wss://txch-relay.bufflehead.org"
+    }
+  ]
+}
