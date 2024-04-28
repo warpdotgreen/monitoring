@@ -1,0 +1,17 @@
+{
+  "main": "dist/index.js",
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "hono": "^4.2.8",
+    "noble-secp256k1": "^1.2.14",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  }
+}
