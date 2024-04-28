@@ -21,9 +21,10 @@ export async function addEvent(event: SignedEvent) {
 
   // remove previous events older than 5 minutes but keep the newest event
   for (const rc in events) {
-    if (events[rc] === newest) continue;
-
-    if (events[rc].created_at < Date.now() - 5 * 60 * 1000) {
+    if (
+      events[rc] !== newest &&
+      events[rc].created_at < Date.now() - 5 * 60 * 1000
+    ) {
       delete events[rc];
     }
   }
@@ -33,7 +34,7 @@ export async function addEvent(event: SignedEvent) {
 // this could be either the last known event or all events from the last 5 minutes
 export function isPubkeyParticipating(pubkey: string): boolean {
   const pubkeys = Object.values(events)
-    .filter((event) => event.created_at < Date.now() - 10000) // exclude brand new events (might not have propagated yet)
+    .filter((event) => event.created_at < Date.now() - 10000) // exclude very recent events (might not have propagated yet)
     .map((event) => event.pubkeys);
 
   return pubkeys.every((pubs) => pubs.length > 0 && pubs.includes(pubkey));

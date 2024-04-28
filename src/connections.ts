@@ -87,5 +87,5 @@ export function addConnection(validator: Validator) {
 }
 
 export function isRelayConnected(relay: string): boolean {
-  return connectedRelays[relay];
+  return !!connectedRelays[relay];
 }
