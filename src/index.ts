@@ -43,8 +43,8 @@ app.get("/check/:pubkey", async (c: Context) => {
 serve(
   {
     fetch: app.fetch,
-    port: config.port,
-    hostname: config.hostname,
+    port: parseInt(process.env.PORT) || 3030,
+    hostname: process.env.HOSTNAME || "localhost",
   },
   (info) => {
     console.log(`Listening on http://${info.address}:${info.port}`);
