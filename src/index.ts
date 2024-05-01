@@ -26,12 +26,12 @@ app.get("/check/:pubkey", async (c: Context) => {
 
   if (!isRelayConnected(validator.relay)) {
     console.log("check for", validator.relay, "FAILED (not connected)");
-    return c.json({ error: "Relay is not connected" }, 503);
+    return c.json({ error: "Relay is not connected" }, 500);
   }
 
   if (!isPubkeyParticipating(pubkey)) {
     console.log("check for", validator.relay, "FAILED (not participating)");
-    return c.json({ error: "Pubkey does not participate in signing" }, 503);
+    return c.json({ error: "Pubkey does not participate in signing" }, 500);
   }
 
   console.log("check for", validator.relay, "OK");

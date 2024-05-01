@@ -13,7 +13,7 @@ Note: This tool only compares events between validators by connecting to each va
 
 ### Query Validator Status
 
-Query the status of a validator by sending a GET request to `/check/{validators_pubkey}`. The response will be either `204` on success, or `503` on failure with a JSON containing the error.
+Query the status of a validator by sending a GET request to `/check/{validators_pubkey}`. The response will be either `204` on success, or `500` on failure with a JSON containing the error.
 
 ## Example
 
