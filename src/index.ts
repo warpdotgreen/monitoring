@@ -44,7 +44,7 @@ serve(
   {
     fetch: app.fetch,
     port: parseInt(process.env.PORT) || 3030,
-    hostname: process.env.HOSTNAME || "localhost",
+    hostname: process.env.HOST || "localhost",
   },
   (info) => {
     console.log(`Listening on http://${info.address}:${info.port}`);
