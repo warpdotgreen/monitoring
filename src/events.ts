@@ -16,7 +16,10 @@ export async function addEvent(event: SignedEvent) {
 
   // determine newest event
   const newest = Object.values(events).reduce((acc, curr) => {
-    return acc.created_at > curr.created_at ? acc : curr;
+    return acc.created_at > curr.created_at ||
+      curr.created_at < Date.now() - 10000 // exclude very recent events (might not have propagated yet)
+      ? acc
+      : curr;
   });
 
   // remove previous events older than 5 minutes but keep the newest event
