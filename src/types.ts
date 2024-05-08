@@ -9,9 +9,8 @@ export interface SignedEvent {
   pubkey: string;
 }
 
-export interface RecentEvents {
-  [key: string]: {
-    created_at: number;
-    pubkeys: string[];
-  };
+export interface StoredEvent {
+  rc: string;
+  created_at: number;
+  pubkeys: string;
 }

@@ -1,5 +1,6 @@
 import { Hono, Context } from "hono";
 import { serve } from "@hono/node-server";
+
 import { addConnection, isRelayConnected } from "./connections";
 import { Validator } from "./types";
 import { isPubkeyParticipating } from "./events";
@@ -29,7 +30,7 @@ app.get("/check/:pubkey", async (c: Context) => {
     return c.json({ error: "Relay is not connected" }, 500);
   }
 
-  if (!isPubkeyParticipating(pubkey)) {
+  if (!(await isPubkeyParticipating(pubkey))) {
     console.log("check for", validator.relay, "FAILED (not participating)");
     return c.json({ error: "Pubkey does not participate in signing" }, 500);
   }

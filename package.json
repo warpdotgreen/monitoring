@@ -4,6 +4,7 @@
     "@hono/node-server": "^1.11.1",
     "hono": "^4.2.8",
     "noble-secp256k1": "^1.2.14",
+    "sqlite3": "^5.1.7",
     "ws": "^8.16.0"
   },
   "devDependencies": {
