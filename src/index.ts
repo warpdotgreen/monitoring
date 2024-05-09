@@ -38,7 +38,7 @@ app.get("/check/:pubkey", async (c: Context) => {
   console.log("check for", validator.relay, "OK");
 
   // all good!
-  return c.json(null, 204);
+  return c.body(null, 204);
 });
 
 serve(
