@@ -66,9 +66,12 @@ export function addConnection(validator: Validator) {
 
       // event has r & c tags -> it's a bridging tx
       if (event[2]?.tags[0]?.[0] === "r" && event[2]?.tags[1]?.[0] === "c") {
-        const rc = event[2].tags[0][1] + event[2].tags[1][1];
+        // TODO: `c` or coin_id may differ for distinct events (validator lags/restarts)
+        // using only `r` or route as the event identifier for now
+        // const rc = event[2].tags[0][1] + event[2].tags[1][1];
+        const rc = event[2].tags[0][1];
 
-        log("event: " + rc);
+        log(`event: ${event[2].tags[0][1]} ${event[2].tags[1][1]}`);
 
         addEvent({
           rc,
