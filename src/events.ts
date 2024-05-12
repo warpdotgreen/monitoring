@@ -19,7 +19,7 @@ export async function addEvent(event: SignedEvent) {
   // add event to db or add pubkey to existing event
   db.run(
     `INSERT INTO events (rc, created_at, pubkeys)
-    VALUES (?, strftime('%s','now'), json(?))
+    VALUES (?, ?, json(?))
     ON CONFLICT(rc) DO UPDATE SET
       pubkeys = CASE
           WHEN NOT EXISTS (
@@ -28,8 +28,17 @@ export async function addEvent(event: SignedEvent) {
               WHERE json_each.value = ?
           ) THEN json_insert(pubkeys, '$[' || json_array_length(pubkeys) || ']', ?)
           ELSE pubkeys
-      END`,
-    [event.rc, JSON.stringify([event.pubkey]), event.pubkey, event.pubkey]
+      END,
+      created_at = CASE WHEN created_at > ? THEN ? ELSE created_at END`,
+    [
+      event.rc,
+      event.created_at,
+      JSON.stringify([event.pubkey]),
+      event.pubkey,
+      event.pubkey,
+      event.created_at,
+      event.created_at,
+    ]
   );
 }
 
