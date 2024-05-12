@@ -59,6 +59,9 @@ export function addConnection(validator: Validator) {
       // ignore non-event messages or events not from this validator
       if (event[0] !== "EVENT" || event[2].pubkey !== validator.pubkey) return;
 
+      // ignore old events (older than 1h)
+      if (event[2].created_at < Date.now() / 1000 - 3600) return;
+
       if (!schnorr.verify(event[2].sig, event[2].id, validator.pubkey)) {
         log("invalid signature");
         return;
