@@ -1,6 +1,6 @@
 # warp.green Validator Monitoring
 
-This is a helper tool for monitoring the uptime of [warp.green](https://warp.green) bridge validators. It checks whether validators are relaying events and signing messages, and it runs a local webserver for querying the current status of a validator. This allows it to be added to any monitoring or alert service, such as BetterStack.
+This is a helper tool for monitoring the uptime of [warp.green](https://warp.green) bridge validators. It checks whether validators are relaying events and signing messages, and it runs a local webserver for querying the current status of a validator. This allows it to be added to any monitoring or alert service, such as Alertmanager or BetterStack.
 
 Note: This tool only compares events between validators by connecting to each validators relay. It does not follow the blockchain and does not know if a validator is actually part of the bridge. Thus, it will not detect if all validators fail.
 
