@@ -29,6 +29,13 @@ docker run -it \
 3. Build: `npm run build`
 4. Run server: `npm start`
 
+### Don't build from source
+
+For each commit on `main`, a Docker container is automatically built by GitHub Actions and published to:
+```
+ghcr.io/warpdotgreen/monitoring:main
+```
+
 ## Example
 
 The status page on [warp-validators.bufflehead.org](https://warp-validators.bufflehead.org) is based on this tool (using a [BetterStack](http://betterstack.com) frontend).
