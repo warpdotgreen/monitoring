@@ -39,11 +39,7 @@ export function addConnection(validator: Validator) {
 
     connectedRelays[validator.relay] = true;
 
-    // NOTE: pubkey filter is not working in current nostr-rs-relay
-    // authors: [validator.pubkey]
-    // https://github.com/scsibug/nostr-rs-relay/issues/189
-
-    ws.send(JSON.stringify(["REQ", "events", { kinds: [1], limit: 500 }]));
+    ws.send(JSON.stringify(["REQ", "events", { kinds: [1], limit: 500, authors: [validator.pubkey] }]));
 
     // ping every 10s, if no pong is received within the timeout, terminate
     pingInterval = setInterval(() => {
