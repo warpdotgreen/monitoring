@@ -6,15 +6,33 @@ Note: This tool only compares events between validators by connecting to each va
 
 ## Getting Started
 
-1. Clone the repository
-2. `npm install`
-3. `npm run build`
-4. `npm start`
+### Docker from source
+```bash
+git clone https://github.com/warpdotgreen/monitoring.git -b main
+cd monitoring
 
-### Query Validator Status
+docker build . -t monitoring
+cp config.testnet.json config.json
+touch events.db
+docker run -it \
+  -e "AGENT='your agent here'" \
+  -v "$(pwd)"/config.json:/app/config.json \
+  -v "$(pwd)"/events.db:/app/events.db \
+  -p  3030:3030 \
+  monitoring
+```
 
-Query the status of a validator by sending a GET request to `/check/{validators_nostr_pubkey}`. The response will be either `204` on success, or `500` on failure with a JSON containing the error.
+### Build from source
+
+1. Clone the repository: `git clone https://github.com/warpdotgreen/monitoring.git -b main; cd monitorng`
+2. Install dependencies: `npm install`
+3. Build: `npm run build`
+4. Run server: `npm start`
 
 ## Example
 
 The status page on [warp-validators.bufflehead.org](https://warp-validators.bufflehead.org) is based on this tool (using a [BetterStack](http://betterstack.com) frontend).
+
+### Query Validator Status
+
+Query the status of a validator by sending a GET request to `/check/{validators_nostr_pubkey}`. The response will be either `204` on success, or `500` on failure with a JSON containing the error.
