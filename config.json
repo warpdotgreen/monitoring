@@ -7,6 +7,38 @@
     {
       "pubkey": "804f399157512ee115d19e0e15fd63f97f6330755c6f928a8c49a6bda35df74e",
       "relay": "wss://txch-relay.bufflehead.org"
+    },
+    {
+      "pubkey": "14aed9c23d7774dda60532891423e4e8adf74f468ea5f5cbac58cf8994387b94",
+      "relay": "wss://relay.msmc.dev"
+    },
+    {
+      "pubkey": "2239f413ce7b399ad1e91e2fb4742960d73637b87a3616c4a28771cc84fb648e",
+      "relay": "wss://relay.giritec.com"
+    },
+    {
+      "pubkey": "6b8d53c62a1d5f9bc68605a7139c06c9ce6d727ecf815044b46cb983fcc17e52",
+      "relay": "wss://txch-relay.tns.cx"
+    },
+    {
+      "pubkey": "c26ce22c6241420e136b8562f9d89e73553a89f29ee15cb0194dd2be184601b8",
+      "relay": "wss://relay.prime-tek.com"
+    },
+    {
+      "pubkey": "38c4190c961bfbc0a23b2c274c36fd6ccad5d50033e8bb263fc4aa23930ededf",
+      "relay": "wss://warpgreen-testnet-relay.midl.dev"
+    },
+    {
+      "pubkey": "e492322cbbc745127af4bd59227d7e7d7b54a98d3a013d2072c4261dff319f88",
+      "relay": "wss://test-relay.defibastion.com"
+    },
+    {
+      "pubkey": "280e03462f0f87ba2aefeb7a033c2c1ec134fc9c06f28a5e9ed308dabf9e7700",
+      "relay": "wss://warpgreen-relay-test.232220.xyz"
+    },
+    {
+      "pubkey": "6f2aa84aa51327db3507e3c0d0fd02876d1b53fecf42aa88e9d32bbf5247ad3d",
+      "relay": "wss://testnet-relay.spacescan.io"
     }
   ]
 }
