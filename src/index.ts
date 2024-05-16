@@ -41,6 +41,24 @@ app.get("/check/:pubkey", async (c: Context) => {
   return c.body(null, 204);
 });
 
+app.get("/metrics/:pubkey", async (c: Context) => {
+  const pubkey = c.req.param("pubkey");
+
+  // get validator from pubkey
+  const validator = config.validators.find(
+    (validator: Validator) => validator.pubkey === pubkey
+  );
+
+  const online = validator && isRelayConnected(validator.relay) && (await isPubkeyParticipating(pubkey));
+
+  const metrics = `# HELP validator_status Validator status (1 for Nostr relay up & validator signing messages, 0 for something wrong)
+# TYPE validator_status gauge
+validator_status ${online ? 1 : 0}
+`;
+
+  return c.body(metrics, 200, { "Content-Type": "text/plain" });
+});
+
 serve(
   {
     fetch: app.fetch,
