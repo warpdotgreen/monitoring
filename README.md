@@ -7,6 +7,7 @@ Note: This tool only compares events between validators by connecting to each va
 ## Getting Started
 
 ### Docker from source
+
 ```bash
 git clone https://github.com/warpdotgreen/monitoring.git -b main
 cd monitoring
@@ -25,7 +26,7 @@ docker run -it \
 
 ### Build from source
 
-1. Clone the repository: `git clone https://github.com/warpdotgreen/monitoring.git -b main; cd monitorng`
+1. Clone the repository: `git clone https://github.com/warpdotgreen/monitoring.git -b main; cd monitoring`
 2. Install dependencies: `npm install`
 3. Build: `npm run build`
 4. Run server: `npm start`
@@ -33,6 +34,7 @@ docker run -it \
 ### Don't build from source
 
 For each commit on `main`, a Docker container is automatically built by GitHub Actions and published to:
+
 ```
 ghcr.io/warpdotgreen/monitoring:main
 ```
@@ -49,7 +51,7 @@ Query the status of a validator by sending a GET request to `/check/{validators_
 
 Assuming you have followed [these](https://github.com/eth-educators/ethstaker-guides/blob/main/monitoring.md) [guides](https://github.com/eth-educators/ethstaker-guides/blob/main/alerting.md) to monitor your Ethereum node, monitoring your overall validator status is trivial. Note that we're using `localhost:3030` here, but you have probably received an external monitoring URL.
 
-First, in `/etc/prometheus/prometheus.yml`, add the job below. Make sure to replace `{your-nostr-pubkey}` with your Nostr public key (no leading `0x`), and change the target accordingly. 
+First, in `/etc/prometheus/prometheus.yml`, add the job below. Make sure to replace `{your-nostr-pubkey}` with your Nostr public key (no leading `0x`), and change the target accordingly.
 
 ```bash
   - job_name: 'validator_outside_status'
