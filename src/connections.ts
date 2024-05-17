@@ -39,7 +39,13 @@ export function addConnection(validator: Validator) {
 
     connectedRelays[validator.relay] = true;
 
-    ws.send(JSON.stringify(["REQ", "events", { kinds: [1], limit: 500, authors: [validator.pubkey] }]));
+    ws.send(
+      JSON.stringify([
+        "REQ",
+        "events",
+        { kinds: [1], limit: 500, authors: [validator.pubkey] },
+      ])
+    );
 
     // ping every 10s, if no pong is received within the timeout, terminate
     pingInterval = setInterval(() => {
@@ -65,10 +71,7 @@ export function addConnection(validator: Validator) {
 
       // event has r & c tags -> it's a bridging tx
       if (event[2]?.tags[0]?.[0] === "r" && event[2]?.tags[1]?.[0] === "c") {
-        // TODO: `c` or coin_id may differ for distinct events (validator lags/restarts)
-        // using only `r` or route as the event identifier for now
-        // const rc = event[2].tags[0][1] + event[2].tags[1][1];
-        const rc = event[2].tags[0][1];
+        const rc = event[2].tags[0][1] + event[2].tags[1][1];
 
         log(`event: ${event[2].tags[0][1]} ${event[2].tags[1][1]}`);
 
