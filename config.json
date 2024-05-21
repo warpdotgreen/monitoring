@@ -1,0 +1,48 @@
+{
+  "validators": [
+    {
+      "pubkey": "db5790fd1aac8f0cb60879cd468b0cc845e5b692350ef7a26d4776c4f6da3776",
+      "relay": "wss://relay.fireacademy.io"
+    },
+    {
+      "pubkey": "ad4bc8487872b07d5acd9dd4ee11906e107a97945f2141eb60d6f0880c29f8e7",
+      "relay": "wss://relay.bufflehead.org"
+    },
+    {
+      "pubkey": "85146a6d0a14a2ae1e8eaa27142f7880caf5fe4428e11fb1fcdc0dc010a8829a",
+      "relay": "wss://xch-relay.tns.cx"
+    },
+    {
+      "pubkey": "ca0085b5cae15bcc80740bb62ab3688cee8fc88dd9520edf23ce120217e653e5",
+      "relay": "wss://relay.spacescan.io"
+    },
+    {
+      "pubkey": "5e9a145844238c5968c79a86fa614acc79edd1628e2267e06495a0b2e4aab7ba",
+      "relay": "wss://relay.chainhq.tech"
+    },
+    {
+      "pubkey": "7eff2950197deca52b67901a9641f4e4aac84b8bdd973d44edc6d73fb98af259",
+      "relay": "wss://relay.ozonewallet.io"
+    },
+    {
+      "pubkey": "7567a34d43e5fbed05afe8b085eadf2462a9f9cf8e1bbb53701ecb9e04e8c09c",
+      "relay": "wss://warpgreen-relay.232220.xyz"
+    },
+    {
+      "pubkey": "10eade3fefcf87d15235bf23e9e6c23bef85aac2762badabe18567fe603c1945",
+      "relay": "wss://relay.msmc.dev"
+    },
+    {
+      "pubkey": "e0a2e65ee292aff65b0fa92a74541a4e5b54f2919bfa6dba08e7df25b4300fb6",
+      "relay": "wss://warpgreen-mainnet-relay.midl.dev"
+    },
+    {
+      "pubkey": "2239f413ce7b399ad1e91e2fb4742960d73637b87a3616c4a28771cc84fb648e",
+      "relay": "wss://relay.giritec.com"
+    },
+    {
+      "pubkey": "f456f0c091ebb98d0446f734b5f35c124b3ae0d0d0a6773e98a53d93e0be545e",
+      "relay": "wss://relay.goby.app"
+    }
+  ]
+}
