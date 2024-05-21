@@ -12,8 +12,9 @@ Note: This tool only compares events between validators by connecting to each va
 git clone https://github.com/warpdotgreen/monitoring.git -b main
 cd monitoring
 
+# (for testnet) cp config.testnet.json config.json
+
 docker build . -t monitoring
-cp config.testnet.json config.json
 touch events.db
 docker run -it \
   -e "AGENT=your agent here" \
