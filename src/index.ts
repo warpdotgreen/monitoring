@@ -1,6 +1,5 @@
 import { Hono, Context } from "hono";
 import { serve } from "@hono/node-server";
-
 import { addConnection, isRelayConnected } from "./connections";
 import { Validator } from "./types";
 import { isPubkeyParticipating } from "./events";
@@ -11,6 +10,34 @@ const config = require(process.env.CONFIG || "../config.json");
 
 // connect to each validator and track events
 config.validators.forEach(addConnection);
+
+// check route for all validators
+// (more efficient for custom monitoring applications)
+app.get("/status", async (c: Context) => {
+  console.log("check all validators")
+  
+  const resp: Record<string, string> = {};
+  for(const validator of config.validators) {
+    const pubkey = validator.pubkey;
+
+    if (!isRelayConnected(validator.relay)) {
+      console.log("check for", validator.relay, "FAILED (not connected)");
+      resp[pubkey] = "Relay is not connected";
+      continue;
+    }
+
+    if (!(await isPubkeyParticipating(pubkey))) {
+      console.log("check for", validator.relay, "FAILED (not participating)");
+      resp[pubkey] = "Pubkey does not participate in signing";
+      continue;
+    }
+
+    console.log("check for", validator.relay, "OK");
+    resp[pubkey] = "OK";
+  }
+
+  return c.json(resp, 200);
+});
 
 // check route (for use in monitoring application)
 app.get("/check/:pubkey", async (c: Context) => {
