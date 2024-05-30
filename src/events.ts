@@ -43,12 +43,12 @@ export async function addEvent(event: SignedEvent) {
 }
 
 // checks if pubkey has signed the most recent event
-// (recent event must be at least 30 seconds old and have at least 3 signers)
+// (recent event must be at least 60 seconds old and have at least 3 signers)
 export function isPubkeyParticipating(pubkey: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
     db.get(
       `SELECT pubkeys FROM events
-      WHERE created_at <= strftime('%s','now') - 30
+      WHERE created_at <= strftime('%s','now') - 60
       AND json_array_length(pubkeys) >= 3
       ORDER BY created_at DESC LIMIT 1`,
       (err, row: StoredEvent) => {
