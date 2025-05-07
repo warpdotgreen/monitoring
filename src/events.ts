@@ -49,7 +49,7 @@ export function isPubkeyParticipating(pubkey: string): Promise<boolean> {
     db.get(
       `SELECT pubkeys FROM events
       WHERE created_at <= strftime('%s','now') - 60
-      AND json_array_length(pubkeys) >= 3
+      AND json_array_length(pubkeys) >= 4
       ORDER BY created_at DESC LIMIT 1`,
       (err, row: StoredEvent) => {
         if (err) {
