@@ -22,5 +22,5 @@ while true; do
         echo "[$(date)] Warning: Could not retrieve a valid height."
     fi
 
-    sleep 60
+    sleep 120
 done
